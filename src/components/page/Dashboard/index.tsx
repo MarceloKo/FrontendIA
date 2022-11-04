@@ -2,14 +2,14 @@ import { Layout, Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import React, { useState } from 'react';
 import {
-    DesktopOutlined, 
-    FileOutlined, 
+    DesktopOutlined,
+    FileOutlined,
     PieChartOutlined,
 } from '@ant-design/icons';
 import imageLogo from "../../../assets/logo.png"
 import IDashboard from './interfaces/IDashboard';
-import { Image } from './style';
-import {useNavigate} from "react-router-dom";
+import { HeaderRight, Image } from './style';
+import { useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -43,10 +43,15 @@ export default function Dashboard({ children }: IDashboard) {
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
                 <Image collapsed={collapsed}><img src={imageLogo} alt="logo" /></Image>
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={(item) => navigate(item.key)} />
+                
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={(item) => navigate(item.key)}  style={{borderTop:'1px solid #ffffff'}}/>
             </Sider>
             <Layout className="site-layout">
-                <Header className="site-layout-background" style={{ padding: 0 }} />
+                <Header className="site-layout-background" style={{ padding: 0 }}>
+                    <HeaderRight>
+                        <h3 onClick={()=> navigate('/')}>Deslogar</h3>
+                    </HeaderRight>
+                </Header>
                 <Content >
 
                     <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>

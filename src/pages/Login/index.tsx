@@ -18,7 +18,7 @@ export default function Login() {
                     <Input placeholder="Login"  />
                     
                     <label>Senha</label>
-                    <Input.Password placeholder="input password" />
+                    <Input.Password placeholder="Senha" />
                 </form>
                 <Button name='Entrar' onClick={() => navigate('/dashboard')} width={'150px'} />
             </BoxLogin>
