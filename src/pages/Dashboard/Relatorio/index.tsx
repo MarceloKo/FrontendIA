@@ -21,7 +21,7 @@ export default function Relatorio() {
                     <label>Selecione o quarto</label>
                     <Select
                         showSearch
-                        placeholder="Select a person"
+                        placeholder="Quarto"
                         optionFilterProp="children"
                         onChange={onChange}
                         onSearch={onSearch}
@@ -44,7 +44,7 @@ export default function Relatorio() {
                         ]}
                     />
                     <label>Selecione a data</label>
-                    <RangePicker />
+                    <RangePicker placeholder={['Data inicial','Data final']}/>
                     <Button name='Entrar' onClick={() => console.log('Gerar PDF')} width={'150px'} style={{ margin: '10px auto' }} />
                 </form>
             </BoxRelatorio>
