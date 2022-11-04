@@ -14,7 +14,11 @@ export const BoxLogin = styled.div`
   align-items: center;
   background: white;
   width: 500px;
-  height: 300px;
+  height: 305px;
   border-radius: 5px;
   padding: 20px;
+  gap: 20px;
+  form{
+    max-width: 250px;
+  }
 `
