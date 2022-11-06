@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd';
 import type { MenuProps } from 'antd';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -9,11 +9,11 @@ import {
 import imageLogo from "../../../assets/logo.png"
 import IDashboard from './interfaces/IDashboard';
 import { HeaderRight, Image } from './style';
-import { useNavigate } from "react-router-dom";
-import { AuthProvider } from '../../../context/Auth/AuthProvider';
+import { useLocation, useNavigate } from "react-router-dom";
 import { RequireAuth } from '../../../context/Auth/RequireAuth';
+import { AuthContext } from '../../../context/Auth/AuthContext';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -38,10 +38,10 @@ const items: MenuItem[] = [
 ];
 
 export default function Dashboard({ children }: IDashboard) {
-
+    const {signOut} = useContext(AuthContext);
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
-
+ 
     return (
         <RequireAuth>
             <Layout style={{ minHeight: '100vh' }}>
@@ -53,7 +53,7 @@ export default function Dashboard({ children }: IDashboard) {
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
                         <HeaderRight>
-                            <h3 onClick={() => navigate('/')}>Deslogar</h3>
+                            <h3 onClick={() => signOut()}>Deslogar</h3>
                         </HeaderRight>
                     </Header>
                     <Content >

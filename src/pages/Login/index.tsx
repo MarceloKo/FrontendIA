@@ -3,20 +3,23 @@ import { BoxLogin, Container } from './style';
 import { Input } from 'antd';
 import imageLogo from "../../assets/logo.png"
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/Auth/AuthContext';
 import Alert from '../../components/Commons/Alert';
 
 export default function Login() {
+    
+
     const auth = useContext(AuthContext);
     const [data, setData] = useState({ email: '', password: '' });
     const navigate = useNavigate();
+    
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setData({ ...data, [e.target.id]: e.target.value });  
     }
-    const onSubmit = async () => {
-        if(!data.email && !data.password) return Alert({type:'warning',message:'Preencha todos os campos!'});
 
+    const onSubmit = async () => {
+        if(!data.email || !data.password) return Alert({type:'warning',message:'Preencha todos os campos!'});
         const isLogged = await auth.signIn(data.email, data.password);
         if (isLogged) {
             navigate('/dashboard');
@@ -25,6 +28,9 @@ export default function Login() {
             Alert({type:'error',message:'Erro ao logar!'});
         }
     }
+
+
+
     return (
         <Container>
             <BoxLogin>

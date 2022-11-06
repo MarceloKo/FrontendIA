@@ -6,8 +6,6 @@ import Relatorio from "./pages/Dashboard/Relatorio"
 import Login from "./pages/Login"
 
 function App() {
-  console.log('teste22')
-
   return (
     <BrowserRouter>
       <Routes>

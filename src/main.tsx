@@ -9,14 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from './context/Auth/AuthProvider'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  <>
+    <GlobalStyle />
+    <ToastContainer theme='colored' />
 
-      <GlobalStyle/>
-      <ToastContainer theme='colored' />
-
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-      
-  </React.StrictMode>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </>
 )
