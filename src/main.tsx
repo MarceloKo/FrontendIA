@@ -11,7 +11,7 @@ import { AuthProvider } from './context/Auth/AuthProvider'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <>
     <GlobalStyle />
-    <ToastContainer theme='colored' />
+    <ToastContainer theme='colored' pauseOnFocusLoss={false} />
 
     <AuthProvider>
       <App />

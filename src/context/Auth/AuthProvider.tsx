@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { useApi } from "../../hooks/useApi"
+import { authApi } from "../../services/auth"
 import { AuthContext } from "./AuthContext"
 import IUser from "./interfaces/IUser"
 export const AuthProvider = ({children}:{children:JSX.Element})=>{
     const [user,setUser] = useState<IUser | null>(null)
-    const api = useApi();
+    const api = authApi();
     
     // useEffect(()=>{
         
@@ -15,7 +15,6 @@ export const AuthProvider = ({children}:{children:JSX.Element})=>{
         if(storedToken){
             const response = await api.validateToken(storedToken);
             if(response.user){
-                console.log(response.user)
                 setUser(response.user);
             }
             return
