@@ -20,5 +20,7 @@ export const BoxLogin = styled.div`
   gap: 20px;
   form{
     max-width: 250px;
+   
   }
+  
 `
